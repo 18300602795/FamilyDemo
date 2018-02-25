@@ -2,6 +2,7 @@ package com.familydemo.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,6 @@ import com.familydemo.fragment.HunterFragment;
 import com.familydemo.fragment.MessageFragment;
 import com.familydemo.fragment.PersonFragment;
 import com.familydemo.fragment.TravelsFragment;
-import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -186,5 +186,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
 
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (personFragment != null)
+            personFragment.onActivityResult(requestCode, resultCode, data);
     }
 }
