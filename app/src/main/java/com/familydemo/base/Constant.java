@@ -19,4 +19,11 @@ public class Constant {
     public static final int PLAY_COMPLETION = 103;
     //播放错误
     public static final int PLAY_ERROR = 104;
+
+    public static final int CODE_GALLERY_REQUEST = 0xa0;
+    public static final int CODE_CAMERA_REQUEST = 0xa1;
+    public static final int CODE_RESULT_REQUEST = 0xa2;
+    public static final int CAMERA_PERMISSIONS_REQUEST_CODE = 0x03;
+    public static final int STORAGE_PERMISSIONS_REQUEST_CODE = 0x04;
+
 }

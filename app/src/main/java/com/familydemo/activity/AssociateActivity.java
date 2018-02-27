@@ -1,5 +1,6 @@
 package com.familydemo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -101,7 +102,7 @@ public class AssociateActivity extends BaseActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.title_right_iv:
-//                startActivity(new Intent(this, AssociateActivity.class));
+                startActivity(new Intent(this, AccountInfoActivity.class));
                 break;
         }
     }

@@ -41,7 +41,10 @@
         <activity android:name=".activity.AssociateActivity" />
         //真人认证
         <activity android:name=".activity.RealActivity" />
-
+        //个人中心
+        <activity android:name=".activity.AccountInfoActivity" />
+        //个人主页
+        <activity android:name=".activity.HomeActivity" />
     </application>
 
 </manifest>

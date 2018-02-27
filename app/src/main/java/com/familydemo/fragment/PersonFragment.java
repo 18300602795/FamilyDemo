@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.familydemo.R;
+import com.familydemo.activity.AccountInfoActivity;
 import com.familydemo.activity.FriendActivity;
 import com.familydemo.activity.RealActivity;
 import com.familydemo.activity.VideoActivity;
@@ -37,6 +38,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
+import static com.familydemo.base.Constant.CAMERA_PERMISSIONS_REQUEST_CODE;
+import static com.familydemo.base.Constant.CODE_CAMERA_REQUEST;
+import static com.familydemo.base.Constant.CODE_GALLERY_REQUEST;
+import static com.familydemo.base.Constant.CODE_RESULT_REQUEST;
+import static com.familydemo.base.Constant.STORAGE_PERMISSIONS_REQUEST_CODE;
 
 /**
  * Created by Administrator on 2018\2\22 0022.
@@ -55,11 +61,6 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
     private File fileCropUri = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "/crop_photo.jpg");
     private Uri imageUri;
     private Uri cropImageUri;
-    private static final int CODE_GALLERY_REQUEST = 0xa0;
-    private static final int CODE_CAMERA_REQUEST = 0xa1;
-    private static final int CODE_RESULT_REQUEST = 0xa2;
-    private static final int CAMERA_PERMISSIONS_REQUEST_CODE = 0x03;
-    private static final int STORAGE_PERMISSIONS_REQUEST_CODE = 0x04;
     private List<ImageView> imageViews;
 
     @Nullable
@@ -107,9 +108,9 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
             photos_ll.addView(imageViews.get(i));
         }
         ImageView imageView = new ImageView(getActivity());
-        imageView.setPadding(Utils.dip2px(getActivity(), 3),0,Utils.dip2px(getActivity(), 3),0);
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(Utils.dip2px(getActivity(), 50),Utils.dip2px(getActivity(), 50)));
-        imageView.setImageResource(R.mipmap.btn_takephoto_grey);
+        imageView.setPadding(Utils.dip2px(getActivity(), 3), 0, Utils.dip2px(getActivity(), 3), 0);
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(Utils.dip2px(getActivity(), 50), Utils.dip2px(getActivity(), 50)));
+        imageView.setImageResource(R.mipmap.btn_takephoto);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,6 +159,7 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.photo_img:
+                startActivity(new Intent(getActivity(), AccountInfoActivity.class));
                 break;
             case R.id.video_ll:
                 startActivity(new Intent(getActivity(), VideoActivity.class));
@@ -185,6 +187,7 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
                 break;
         }
     }
+
     /**
      * 自动获取相机权限
      */
@@ -317,8 +320,8 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
         ImageView imageView = new ImageView(getActivity());
 
         imageView.setImageBitmap(bitmap);
-        imageView.setPadding(Utils.dip2px(getActivity(), 3),0,Utils.dip2px(getActivity(), 3),0);
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(Utils.dip2px(getActivity(), 50),Utils.dip2px(getActivity(), 50)));
+        imageView.setPadding(Utils.dip2px(getActivity(), 3), 0, Utils.dip2px(getActivity(), 3), 0);
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(Utils.dip2px(getActivity(), 50), Utils.dip2px(getActivity(), 50)));
         imageViews.add(imageView);
         addPhotos();
     }

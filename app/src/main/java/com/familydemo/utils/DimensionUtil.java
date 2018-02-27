@@ -11,7 +11,6 @@ public class DimensionUtil {
 	 * @param context
 	 * @return
 	 */
-	
 	private static Handler mhanHandler;
 	
 	

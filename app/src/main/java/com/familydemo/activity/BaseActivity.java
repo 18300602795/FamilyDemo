@@ -3,21 +3,29 @@ package com.familydemo.activity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
-
-import com.familydemo.R;
-import com.jaeger.library.StatusBarUtil;
 
 /**
  * Created by Administrator on 2018\2\22 0022.
  */
 
-public class BaseActivity extends Activity{
+public class BaseActivity extends FragmentActivity {
+
+    protected Activity context;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = BaseActivity.this;
+    }
 
     /**
      * 设置状态栏透明
+     *
      * @param on
      */
     @TargetApi(19)

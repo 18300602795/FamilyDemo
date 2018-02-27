@@ -30,6 +30,8 @@ public class TakePhotoDialog extends Dialog implements View.OnClickListener {
     private ImageView close_iv;
     private Context mContext;
     private TakePhotoCallBack photoCallBack;
+    private String titles;
+
 
     public void setPhotoCallBack(TakePhotoCallBack photoCallBack) {
         this.photoCallBack = photoCallBack;
@@ -45,10 +47,17 @@ public class TakePhotoDialog extends Dialog implements View.OnClickListener {
         this.mContext = context;
     }
 
+    public TakePhotoDialog(@NonNull Context context, @StyleRes int themeResId, String titles) {
+        super(context, themeResId);
+        this.mContext = context;
+        this.titles = titles;
+    }
+
     protected TakePhotoDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
         this.mContext = context;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +70,7 @@ public class TakePhotoDialog extends Dialog implements View.OnClickListener {
         camera_ll.setOnClickListener(this);
         album_ll.setOnClickListener(this);
         close_iv.setOnClickListener(this);
+        title_tv.setText(titles);
         initView();
     }
 
@@ -108,14 +118,6 @@ public class TakePhotoDialog extends Dialog implements View.OnClickListener {
                 album_ll.setAnimation(album_animation);
             }
         }, 50);
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                title_tv.setAnimation(title_animation);
-                close_iv.setAnimation(close_animation);
-            }
-        }, 100);
     }
 
     public void showAnim() {
