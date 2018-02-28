@@ -20,7 +20,7 @@ import com.familydemo.fragment.GameFragment;
 import com.familydemo.fragment.PhotoFragment;
 import com.familydemo.utils.Utils;
 import com.familydemo.view.CircleImageView;
-import com.familydemo.view.StickyNavLayout;
+import com.familydemo.view.HomePersonSticky;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     private LinearLayout info_ll, flower_ll;
     private TextView nick_tv, flower_num;
     private ImageView sex_img, real_img, flower_img;
-    private StickyNavLayout sticky;
+    private HomePersonSticky sticky;
     private LinearLayout game_ll, photo_ll, find_ll;
     private TextView game_num, photo_num, find_num;
     private View game_bg, photo_bg, find_bg;

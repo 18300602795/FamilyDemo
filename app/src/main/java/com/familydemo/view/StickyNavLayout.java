@@ -17,7 +17,6 @@ import android.widget.OverScroller;
 
 import com.familydemo.R;
 import com.familydemo.callback.HomeCallback;
-import com.familydemo.utils.Utils;
 
 
 public class StickyNavLayout extends LinearLayout implements NestedScrollingParent {
@@ -51,7 +50,8 @@ public class StickyNavLayout extends LinearLayout implements NestedScrollingPare
         boolean showTop = dy < 0 && getScrollY() >= 0 && !ViewCompat.canScrollVertically(target, -1);
 
         if (hiddenTop || showTop) {
-            homeCallback.startUp(scrollY);
+            if (homeCallback != null)
+                homeCallback.startUp(scrollY);
             scrollBy(0, dy);
             consumed[1] = dy;
         }
@@ -149,11 +149,11 @@ public class StickyNavLayout extends LinearLayout implements NestedScrollingPare
         }
     }
 
-    private View mTop;
+    protected View mTop;
     private View mNav;
     private ViewPager mViewPager;
 
-    private int mTopViewHeight;
+    protected int mTopViewHeight;
 
     private OverScroller mScroller;
     private VelocityTracker mVelocityTracker;
@@ -272,7 +272,7 @@ public class StickyNavLayout extends LinearLayout implements NestedScrollingPare
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mTopViewHeight = mTop.getMeasuredHeight() - Utils.dip2px(getContext(), 150);
+        mTopViewHeight = mTop.getMeasuredHeight();
     }
 
 

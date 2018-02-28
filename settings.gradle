@@ -1,1 +1,1 @@
-include ':app', ':layoutmanager', ':adapter-lib'
+include ':app', ':baseadapter-recyclerview', ':adapter-lib', ':layoutmanager'

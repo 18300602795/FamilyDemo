@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.familydemo.R;
 import com.familydemo.fragment.BaseFragment;
-import com.familydemo.fragment.HunterFragment;
+import com.familydemo.fragment.HomeFragment;
 import com.familydemo.fragment.MessageFragment;
 import com.familydemo.fragment.PersonFragment;
 import com.familydemo.fragment.TravelsFragment;
@@ -23,7 +23,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private List<BaseFragment> fragments;
-    private HunterFragment hunterFragment;
+    private HomeFragment homeFragment;
     private TravelsFragment travelsFragment;
     private MessageFragment messageFragment;
     private PersonFragment personFragment;
@@ -92,15 +92,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             setDefault(current);
         switch (type) {
             case 1:
-                if (hunterFragment == null) {
-                    hunterFragment = new HunterFragment();
-                    transaction.add(R.id.frameLayout, hunterFragment);
-                    fragments.add(hunterFragment);
+                if (homeFragment == null) {
+                    homeFragment = new HomeFragment();
+                    transaction.add(R.id.frameLayout, homeFragment);
+                    fragments.add(homeFragment);
                 }
                 current = 1;
                 item_tv1.setTextColor(getResources().getColor(R.color.red));
                 item_img1.setImageResource(R.mipmap.ic_tab_dynamic_press);
-                transaction.show(hunterFragment);
+                transaction.show(homeFragment);
                 break;
             case 2:
                 if (travelsFragment == null) {

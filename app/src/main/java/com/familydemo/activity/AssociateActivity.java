@@ -12,12 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.familydemo.R;
+import com.familydemo.base.CardConfig;
 import com.familydemo.bean.CardBean;
 import com.familydemo.callback.CardCallback;
 import com.jaeger.library.StatusBarUtil;
 import com.mcxtzhang.commonadapter.rv.CommonAdapter;
 import com.mcxtzhang.commonadapter.rv.ViewHolder;
-import com.mcxtzhang.layoutmanager.swipecard.CardConfig;
 import com.mcxtzhang.layoutmanager.swipecard.OverLayCardLayoutManager;
 
 import java.util.ArrayList;
