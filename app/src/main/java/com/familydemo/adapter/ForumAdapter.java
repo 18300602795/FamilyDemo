@@ -1,6 +1,7 @@
 package com.familydemo.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.familydemo.R;
+import com.familydemo.activity.CommentActivity;
+import com.familydemo.activity.ShowImageActivity;
+
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2018\2\27 0027.
@@ -17,6 +22,17 @@ import com.familydemo.R;
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumHolder> {
     private Context context;
+    private ArrayList<Integer> imgs;
+
+    public ForumAdapter(Context context, ArrayList<Integer> imgs) {
+        this.context = context;
+        if (imgs == null) {
+            imgs = new ArrayList<>();
+        } else {
+            this.imgs = imgs;
+        }
+
+    }
 
     public ForumAdapter(Context context) {
         this.context = context;
@@ -30,6 +46,34 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumHolder>
 
     @Override
     public void onBindViewHolder(ForumHolder holder, int position) {
+        if (imgs.size() == 0) {
+            holder.img1.setVisibility(View.GONE);
+            holder.img2.setVisibility(View.GONE);
+            holder.img3.setVisibility(View.GONE);
+            holder.img4.setVisibility(View.GONE);
+
+        } else if (imgs.size() == 1) {
+            holder.img1.setVisibility(View.VISIBLE);
+            holder.img2.setVisibility(View.GONE);
+            holder.img3.setVisibility(View.GONE);
+            holder.img4.setVisibility(View.VISIBLE);
+            holder.img1.setImageResource(imgs.get(0));
+        } else if (imgs.size() == 2) {
+            holder.img1.setVisibility(View.VISIBLE);
+            holder.img2.setVisibility(View.VISIBLE);
+            holder.img3.setVisibility(View.GONE);
+            holder.img4.setVisibility(View.GONE);
+            holder.img1.setImageResource(imgs.get(0));
+            holder.img1.setImageResource(imgs.get(1));
+        } else if (imgs.size() >= 3) {
+            holder.img1.setVisibility(View.VISIBLE);
+            holder.img2.setVisibility(View.VISIBLE);
+            holder.img3.setVisibility(View.VISIBLE);
+            holder.img4.setVisibility(View.GONE);
+            holder.img1.setImageResource(imgs.get(0));
+            holder.img2.setImageResource(imgs.get(1));
+            holder.img3.setImageResource(imgs.get(2));
+        }
         holder.item_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,14 +83,16 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumHolder>
         holder.img_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(context, ShowImageActivity.class);
+                intent.putExtra("imgs", imgs);
+//                context.startActivity(intent);
             }
         });
 
         holder.comment_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                context.startActivity(new Intent(context, CommentActivity.class));
             }
         });
 

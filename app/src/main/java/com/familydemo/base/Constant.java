@@ -25,5 +25,6 @@ public class Constant {
     public static final int CODE_RESULT_REQUEST = 0xa2;
     public static final int CAMERA_PERMISSIONS_REQUEST_CODE = 0x03;
     public static final int STORAGE_PERMISSIONS_REQUEST_CODE = 0x04;
+    public static final int REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 0x05;
 
 }

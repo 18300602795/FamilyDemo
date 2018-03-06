@@ -4,11 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
+    <LinearLayout
         android:id="@+id/title_bar"
-        layout="@layout/title_bar"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/title_bg"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/title_bg" />
+
+        <include
+            layout="@layout/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle"
@@ -27,7 +39,6 @@
         android:backgroundTint="@color/white"
         android:elevation="3dp"
         android:foregroundGravity="center"
-        android:onClick="onClick"
         android:scaleType="center"
         android:src="@mipmap/post_create_icon"
         app:borderWidth="0dp"

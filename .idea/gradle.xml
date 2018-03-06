@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baseadapter-recyclerview" />
             <option value="$PROJECT_DIR$/layoutmanager" />
+            <option value="$PROJECT_DIR$/multi-image-selector" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

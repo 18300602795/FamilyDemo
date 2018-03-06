@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -183,7 +182,6 @@ public class HomeFragment extends BaseFragment implements HomeCallback {
         } else {
             alpha = 0;
         }
-        Log.i("333", "alpha：" + alpha);
         title_bar.setBackgroundColor(ColorUtil.getNewColorByStartEndColor(getActivity(), alpha, R.color.transparent, R.color.white));
         ObjectAnimator.ofFloat(title_tv, "alpha", alpha).setDuration(0).start();
         if (alpha > 0.5){

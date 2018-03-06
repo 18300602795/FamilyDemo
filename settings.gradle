@@ -1,1 +1,1 @@
-include ':app', ':baseadapter-recyclerview', ':adapter-lib', ':layoutmanager'
+include ':app', ':baseadapter-recyclerview', ':adapter-lib', ':layoutmanager', ':multi-image-selector'

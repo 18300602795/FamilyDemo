@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
@@ -23,7 +23,7 @@ import com.familydemo.R;
  * Created by Administrator on 2018\2\22 0022.
  */
 
-public class HunterHeaderView extends LinearLayout {
+public class HunterHeaderView extends RelativeLayout {
     View mRootView;
     private Context mContext;
 

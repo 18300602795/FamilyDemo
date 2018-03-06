@@ -3,6 +3,7 @@ package com.familydemo.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -185,6 +186,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 showFragment(4);
                 break;
 
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (personFragment != null) {
+            personFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 

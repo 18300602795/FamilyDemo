@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,6 +36,7 @@ import static com.familydemo.base.Constant.CAMERA_PERMISSIONS_REQUEST_CODE;
 import static com.familydemo.base.Constant.CODE_CAMERA_REQUEST;
 import static com.familydemo.base.Constant.CODE_GALLERY_REQUEST;
 import static com.familydemo.base.Constant.CODE_RESULT_REQUEST;
+import static com.familydemo.base.Constant.REQUEST_STORAGE_WRITE_ACCESS_PERMISSION;
 
 /**
  * Created by Administrator on 2018\2\26 0026.
@@ -165,11 +167,34 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
+    private void requestPermission(final String permission, String rationale, final int requestCode) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(context, permission)) {
+            new AlertDialog.Builder(context)
+                    .setTitle(R.string.mis_permission_dialog_title)
+                    .setMessage(rationale)
+                    .setPositiveButton(R.string.mis_permission_dialog_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(context, new String[]{permission}, requestCode);
+                        }
+                    })
+                    .setNegativeButton(R.string.mis_permission_dialog_cancel, null)
+                    .create().show();
+        } else {
+            ActivityCompat.requestPermissions(context, new String[]{permission}, requestCode);
+        }
+    }
+
     /**
      * 自动获取相机权限
      */
     private void autoObtainCameraPermission() {
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    getString(R.string.mis_permission_rationale_write_storage),
+                    REQUEST_STORAGE_WRITE_ACCESS_PERMISSION);
+        } else if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
                 || ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission.CAMERA)) {
@@ -216,6 +241,9 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode) {
+            case REQUEST_STORAGE_WRITE_ACCESS_PERMISSION:
+                autoObtainCameraPermission();
+                break;
             //调用系统相机申请拍照权限回调
             case CAMERA_PERMISSIONS_REQUEST_CODE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

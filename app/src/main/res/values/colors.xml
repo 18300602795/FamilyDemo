@@ -8,6 +8,8 @@
     <color name="btn_select">#e0e0e0</color>
     <color name="title_bg">#6dc9d0</color>
     <color name="line_gray">#eeeeee</color>
+    <color name="send_color">#ff5733</color>
+    <color name="owner_color">#00cdaf</color>
 
 
     <color name="white">#ffffff</color>
